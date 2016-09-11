@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class EditMemeViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var topText: UITextField!
@@ -18,16 +18,33 @@ class ViewController: UIViewController {
     @IBOutlet weak var libraryButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var topNavBar: UINavigationBar!
+    
+    
+    var incomingMeme: Meme!
 
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBarController?.tabBar.hidden = true
         
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         shareButton.enabled = false
         initMemeTextFields()
         
-
+        if incomingMeme != nil{
+            shareButton.enabled = true
+            topText.text = "tadaaa"
+            bottomText.text = incomingMeme.bottomText
+            imageView.image = incomingMeme.rawImage
+            topText.hidden = false
+            bottomText.hidden = false
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,7 +55,7 @@ class ViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-
+        tabBarController?.tabBar.hidden = true
     }
 
     @IBAction func pickerTapped(sender: AnyObject) {
@@ -55,8 +72,8 @@ class ViewController: UIViewController {
     }
     
     func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func unsubscribeFromKeyboardNotifications() {
@@ -89,6 +106,7 @@ class ViewController: UIViewController {
     func generateMemedImage() -> UIImage
     {
         toolBar.hidden = true
+        topNavBar.hidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawViewHierarchyInRect(self.view.frame,
@@ -98,15 +116,19 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         toolBar.hidden = false
-        
+        topNavBar.hidden = false
         return memedImage
+    }
+
+    @IBAction func cancelButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
 
 
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension EditMemeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -135,12 +157,12 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 return
             }
             self.saveMeme()
-            print("Meme object creaated.")
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension EditMemeViewController: UITextFieldDelegate {
     
     func saveMeme() {
         //Create the meme

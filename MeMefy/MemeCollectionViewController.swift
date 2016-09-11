@@ -50,7 +50,7 @@ class MemeCollectionViewController: UICollectionViewController {
             let dest = segue.destinationViewController as! MemeDetailViewController
             let index = sender as! Int
             let meme = memes[index]
-            dest.memeImage = meme.processedImage
+            dest.meme = meme
         }
     }
 

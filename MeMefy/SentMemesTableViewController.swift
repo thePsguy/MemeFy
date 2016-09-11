@@ -46,6 +46,19 @@ class SentMemesTableViewController: UITableViewController {
         cell.textLabel?.text = memes[indexPath.row].topText + " " + memes[indexPath.row].bottomText
         return cell
     }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    
+        let delete = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        })
+        
+        delete.backgroundColor = UIColor.redColor()
+        
+        return [delete]
+    }
+    
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("detailViewSegue", sender: indexPath.row)
@@ -57,7 +70,7 @@ class SentMemesTableViewController: UITableViewController {
             let dest = segue.destinationViewController as! MemeDetailViewController
             let index = sender as! Int
             let meme = memes[index]
-            dest.memeImage = meme.processedImage
+            dest.meme = meme
         }
     }
 }

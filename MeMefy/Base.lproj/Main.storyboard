@@ -53,7 +53,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4rb-fA-Zp9"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Epn-Ux-qMw">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="E4i-sy-KNb"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="E4i-sy-KNb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -111,12 +111,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="6MX-mc-5kB" kind="relationship" relationship="rootViewController" id="FrQ-fI-Owj"/>
+                        <segue destination="6MX-mc-5kB" kind="relationship" relationship="rootViewController" id="DDc-hj-cAa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Elh-3m-DZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-596" y="668"/>
+            <point key="canvasLocation" x="-596" y="898"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="2bb-LU-0cB">
@@ -163,10 +163,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="EZ7-q9-R2q">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="eel-Kw-VQf"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zyu-aZ-xcR">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="txD-JG-RjV"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" id="txD-JG-RjV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -176,12 +175,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bwl-qS-pIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="668"/>
+            <point key="canvasLocation" x="126" y="898"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MeMefy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="MeMefy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -190,22 +189,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oa-Hs-Agp">
-                                <rect key="frame" x="0.0" y="28" width="600" height="528"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3oa-Hs-Agp">
+                                <rect key="frame" x="0.0" y="44" width="600" height="512"/>
                                 <color key="backgroundColor" red="0.29551282051282046" green="0.29551282051282046" blue="0.29551282051282046" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-Da-Eku" userLabel="Bottom Text">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-Da-Eku" userLabel="Bottom Text">
                                 <rect key="frame" x="50" y="508" width="500" height="30"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="45"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDN-ig-cuT">
-                                <rect key="frame" x="50" y="48" width="500" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-eB-oaF">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRg-eB-oaF">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <barButtonItem image="Library" id="cN1-pj-HGk" userLabel="Picker Button">
@@ -214,11 +207,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DLa-Ms-Ihs"/>
-                                    <barButtonItem systemItem="action" id="fgb-uZ-S1A" userLabel="Download Button">
-                                        <connections>
-                                            <action selector="downloadTapped:" destination="BYZ-38-t0r" id="U3J-G1-ONo"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mDJ-we-Qqp"/>
                                     <barButtonItem tag="1" image="Camera" id="RVT-ca-x0m">
                                         <connections>
@@ -227,6 +215,29 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcL-5t-wvM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="FbT-GY-FWh">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="fgb-uZ-S1A" userLabel="Download Button">
+                                            <connections>
+                                                <action selector="downloadTapped:" destination="BYZ-38-t0r" id="U3J-G1-ONo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="WDI-r4-oTA">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="BYZ-38-t0r" id="S8u-MV-sCI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDN-ig-cuT">
+                                <rect key="frame" x="50" y="66" width="500" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -235,14 +246,17 @@
                             <constraint firstItem="RRg-eB-oaF" firstAttribute="top" secondItem="3oa-Hs-Agp" secondAttribute="bottom" id="DK4-3f-Gpd"/>
                             <constraint firstItem="ZDN-ig-cuT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="JDt-a5-xfJ"/>
                             <constraint firstAttribute="trailing" secondItem="3oa-Hs-Agp" secondAttribute="trailing" id="Lzu-3A-ny9"/>
-                            <constraint firstItem="ZDN-ig-cuT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="OUI-nG-8ql"/>
+                            <constraint firstItem="ZDN-ig-cuT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="OUI-nG-8ql"/>
                             <constraint firstItem="RRg-eB-oaF" firstAttribute="top" secondItem="gyB-Da-Eku" secondAttribute="bottom" constant="18" id="PHS-sn-5Aq"/>
                             <constraint firstItem="ZDN-ig-cuT" firstAttribute="leading" secondItem="gyB-Da-Eku" secondAttribute="leading" id="TRm-T5-wly"/>
                             <constraint firstItem="RRg-eB-oaF" firstAttribute="top" secondItem="gyB-Da-Eku" secondAttribute="bottom" constant="18" id="Vdf-WF-6l0"/>
                             <constraint firstItem="3oa-Hs-Agp" firstAttribute="leading" secondItem="RRg-eB-oaF" secondAttribute="leading" id="b24-Jl-yKi"/>
                             <constraint firstItem="RRg-eB-oaF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="dcG-2C-3Cy"/>
+                            <constraint firstItem="KcL-5t-wvM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="eHe-nl-rF8"/>
                             <constraint firstItem="3oa-Hs-Agp" firstAttribute="trailing" secondItem="RRg-eB-oaF" secondAttribute="trailing" id="hh0-Q0-ZrY"/>
-                            <constraint firstItem="3oa-Hs-Agp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ns0-4V-7Sb"/>
+                            <constraint firstItem="KcL-5t-wvM" firstAttribute="leading" secondItem="3oa-Hs-Agp" secondAttribute="leading" id="kSX-wa-pVv"/>
+                            <constraint firstItem="KcL-5t-wvM" firstAttribute="trailing" secondItem="3oa-Hs-Agp" secondAttribute="trailing" id="n8w-eI-v9D"/>
+                            <constraint firstItem="3oa-Hs-Agp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="ns0-4V-7Sb"/>
                             <constraint firstItem="gyB-Da-Eku" firstAttribute="centerX" secondItem="RRg-eB-oaF" secondAttribute="centerX" id="pUh-PP-3mc"/>
                         </constraints>
                         <variation key="default">
@@ -251,6 +265,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomText" destination="gyB-Da-Eku" id="UZB-5W-njJ"/>
                         <outlet property="cameraButton" destination="RVT-ca-x0m" id="Vfy-Rw-nnr"/>
@@ -258,12 +273,13 @@
                         <outlet property="libraryButton" destination="cN1-pj-HGk" id="Dbf-wT-Pla"/>
                         <outlet property="shareButton" destination="fgb-uZ-S1A" id="mKQ-nK-2I3"/>
                         <outlet property="toolBar" destination="RRg-eB-oaF" id="baO-Kw-0ey"/>
+                        <outlet property="topNavBar" destination="KcL-5t-wvM" id="V6U-5E-AvH"/>
                         <outlet property="topText" destination="ZDN-ig-cuT" id="hz6-uC-1Sn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="107"/>
+            <point key="canvasLocation" x="1574" y="110"/>
         </scene>
         <!--Meme Detail View Controller-->
         <scene sceneID="Ffw-jS-XJF">
@@ -277,7 +293,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gFq-fg-Osw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gFq-fg-Osw">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                             </imageView>
                         </subviews>
@@ -290,6 +306,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="KbT-M5-AvU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Uap-De-q4Q">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="editMeme" id="2AV-LB-RxK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="gFq-fg-Osw" id="Ola-vW-eKZ"/>
@@ -297,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMd-gq-am7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="916"/>
+            <point key="canvasLocation" x="766" y="110"/>
         </scene>
     </scenes>
     <resources>
@@ -308,6 +331,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pjl-3o-5LZ"/>
-        <segue reference="txD-JG-RjV"/>
+        <segue reference="2AV-LB-RxK"/>
     </inferredMetricsTieBreakers>
 </document>

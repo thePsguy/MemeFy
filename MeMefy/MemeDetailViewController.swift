@@ -12,12 +12,12 @@ class MemeDetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var memeImage: UIImage!
+    var meme: Meme!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = memeImage
+        imageView.image = meme.processedImage
         
         self.tabBarController?.tabBar.hidden = true
         // Do any additional setup after loading the view.
@@ -32,15 +32,18 @@ class MemeDetailViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+//    @IBAction func editMeme(sender: AnyObject) {
+//        
+//        performSegueWithIdentifier("editMeme", sender: nil)
+//        
+//    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "editMeme"){
+            let dest = segue.destinationViewController as! EditMemeViewController
+            dest.incomingMeme = meme
+        }
     }
-    */
 
 }
