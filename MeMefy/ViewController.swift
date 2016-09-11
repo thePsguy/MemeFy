@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        shareButton.enabled = false
         initMemeTextFields()
         
 
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
 
     }
 
-    @IBAction func PickerTapped(sender: AnyObject) {
+    @IBAction func pickerTapped(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
@@ -52,7 +53,6 @@ class ViewController: UIViewController {
 
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
@@ -69,8 +69,8 @@ class ViewController: UIViewController {
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        if view.frame.origin.y == 0 && bottomText.isFirstResponder(){
-            view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomText.isFirstResponder(){
+            view.frame.origin.y = -1 * getKeyboardHeight(notification)
         }
     }
     
@@ -80,13 +80,6 @@ class ViewController: UIViewController {
         return keyboardSize.CGRectValue().height
     }
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var rawImage: UIImage
-        var processedImage: UIImage
-    }
-
     func getMeme() -> Meme {
         //Create the meme
         let meme = Meme.init(topText: topText.text!, bottomText: bottomText.text!, rawImage: imageView.image!, processedImage: generateMemedImage())
@@ -120,6 +113,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let image: UIImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
         imageView.image = image
         
+        shareButton.enabled = true
+        topText.hidden = false
+        bottomText.hidden = false
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
@@ -129,15 +126,27 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     @IBAction func downloadTapped(sender: AnyObject) {
-        let meme = getMeme()
 //        imageView.image = meme.processedImage
-        let nextController = UIActivityViewController(activityItems: [meme.processedImage], applicationActivities: nil)
+        let nextController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         self.presentViewController(nextController, animated: true, completion: nil)
+        
+        nextController.completionWithItemsHandler = {(activityType, completed:Bool, returnedItems:[AnyObject]?, error: NSError?) in
+            if (!completed) {
+                return
+            }
+            self.saveMeme()
+            print("Meme object creaated.")
+        }
     }
-
 }
 
 extension ViewController: UITextFieldDelegate {
+    
+    func saveMeme() {
+        //Create the meme
+        let meme = getMeme()
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+    }
     
     func initMemeTextFields(){
         let memeTextAttributes = [
@@ -147,19 +156,17 @@ extension ViewController: UITextFieldDelegate {
             NSStrokeWidthAttributeName : -5
         ]
         
-        topText.defaultTextAttributes = memeTextAttributes
-        bottomText.defaultTextAttributes = memeTextAttributes
-        topText.textAlignment = NSTextAlignment.Center
-        bottomText.textAlignment = NSTextAlignment.Center
-        
-        topText.text = "TOP TEXT"
-        bottomText.text = "BOTTOM TEXT"
-        
-        topText.borderStyle = UITextBorderStyle.None
-        bottomText.borderStyle = UITextBorderStyle.None
-        
-        topText.delegate = self
-        bottomText.delegate = self
+        func setTextField(field: UITextField){
+            field.hidden = true
+            field.defaultTextAttributes = memeTextAttributes
+            field.textAlignment = NSTextAlignment.Center
+            field.text = field.tag==0 ? "TOP TEXT" : "BOTTOM TEXT"
+            field.borderStyle = UITextBorderStyle.None
+            field.delegate = self
+        }
+        setTextField(topText)
+        setTextField(bottomText)
+    
     }
     
     func textFieldDidEndEditing(textField: UITextField) {

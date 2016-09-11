@@ -12,6 +12,8 @@
 		4D88BC9D1D82F01100BF0CA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D88BC9B1D82F01100BF0CA2 /* Main.storyboard */; };
 		4D88BC9F1D82F01100BF0CA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D88BC9E1D82F01100BF0CA2 /* Assets.xcassets */; };
 		4D88BCA21D82F01100BF0CA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D88BCA01D82F01100BF0CA2 /* LaunchScreen.storyboard */; };
+		4DF3C8621D851A8500C4B07D /* meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3C8611D851A8500C4B07D /* meme.swift */; };
+		4DF3C8641D85265400C4B07D /* SentMemesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF3C8631D85265400C4B07D /* SentMemesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		4D88BC9E1D82F01100BF0CA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D88BCA11D82F01100BF0CA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D88BCA31D82F01100BF0CA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DF3C8611D851A8500C4B07D /* meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meme.swift; sourceTree = "<group>"; };
+		4DF3C8631D85265400C4B07D /* SentMemesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMemesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				4D88BC971D82F01100BF0CA2 /* AppDelegate.swift */,
 				4D88BC991D82F01100BF0CA2 /* ViewController.swift */,
+				4DF3C8611D851A8500C4B07D /* meme.swift */,
+				4DF3C8631D85265400C4B07D /* SentMemesTableViewController.swift */,
 				4D88BC9B1D82F01100BF0CA2 /* Main.storyboard */,
 				4D88BC9E1D82F01100BF0CA2 /* Assets.xcassets */,
 				4D88BCA01D82F01100BF0CA2 /* LaunchScreen.storyboard */,
@@ -137,7 +143,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D88BC9A1D82F01100BF0CA2 /* ViewController.swift in Sources */,
+				4DF3C8641D85265400C4B07D /* SentMemesTableViewController.swift in Sources */,
 				4D88BC981D82F01100BF0CA2 /* AppDelegate.swift in Sources */,
+				4DF3C8621D851A8500C4B07D /* meme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +295,7 @@
 				4D88BCA81D82F01100BF0CA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
